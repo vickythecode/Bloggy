@@ -50,7 +50,13 @@ const Navbar = () => {
     });
     alert("logout successfully");
     setUserInfo(null);
+    setIsMenuOpen(false);
   }
+
+    const handleMenuClick = () => {
+    setIsMenuOpen(false); // Close the burger menu
+    setIsProfileDropdownOpen(false); // Close the profile dropdown menu
+  };
 
   const username = userInfo?.username;
   const blogPostsNum = userInfo?.blogPostsNum || 0; // Assuming userInfo includes a field for blog post count
