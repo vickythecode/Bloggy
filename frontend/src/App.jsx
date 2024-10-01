@@ -8,6 +8,7 @@ import CreatePost from "./components/CreatePost";
 import PostPage from "./components/PostPage";
 import EditPost from "./components/EditPost";
 import IndexPage from "./components/IndexPage";
+import AboutPage from "./components/AboutPage";
 
 function App() {
   return (
@@ -15,6 +16,7 @@ function App() {
       <Routes>
         <Route path="/" element={<Layout />}>
           <Route index element={<IndexPage />} />
+          <Route path="/about" element={<AboutPage />} />
           <Route path="/login" element={<LoginPage />} />
           <Route path="/register" element={<RegisterPage />} />
           <Route path="/create" element={<CreatePost />} />

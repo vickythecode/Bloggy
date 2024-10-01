@@ -32,7 +32,8 @@ export default function CreatePost() {
     return <Navigate to={'/'} />
   }
   return (
-    <form onSubmit={createNewPost}>
+    <div className="createNewPost">
+       <form onSubmit={createNewPost}>
       <input type="title"
              placeholder={'Title'}
              value={title}
@@ -46,5 +47,6 @@ export default function CreatePost() {
       <Editor value={content} onChange={setContent} />
       <button style={{marginTop:'5px'}}>Create post</button>
     </form>
+    </div>
   );
 } 

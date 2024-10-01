@@ -32,7 +32,8 @@ export default function LoginPage() {
   }
   
   return (
-    <form className="login" onSubmit={login}>
+    <div className="registerContainer">
+      <form className="login" onSubmit={login}>
       <h1>Login</h1>
       <input type="text"
              placeholder="username"
@@ -45,5 +46,6 @@ export default function LoginPage() {
       <button>Login</button>
       <p style={{margin:"10px",color:"GrayText",textAlign:"center"}}>if you don't have an Account please register it</p>
     </form>
+    </div>
   );
 } 

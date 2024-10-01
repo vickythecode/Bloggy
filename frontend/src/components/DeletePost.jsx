@@ -1,7 +1,10 @@
 import React from 'react';
-import { Navigate } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import { faTrash } from '@fortawesome/free-solid-svg-icons';
 
 const DeletePost = ({ postId, onDeleteSuccess }) => {
+  const navigate = useNavigate(); // Initialize the useNavigate hook
 
   const deletePost = async () => {
     try {
@@ -15,7 +18,7 @@ const DeletePost = ({ postId, onDeleteSuccess }) => {
         if (onDeleteSuccess) {
           onDeleteSuccess(); // Callback to update the UI without refreshing
         } else {
-          return <Navigate to={'/'} /> // Navigate to homepage if no callback is provided
+          navigate('/about'); // Use navigate to redirect to the homepage
         }
       } else {
         const errorData = await response.json();
@@ -30,10 +33,9 @@ const DeletePost = ({ postId, onDeleteSuccess }) => {
 
   return (
     <button onClick={deletePost} className="delete-button">
-      Delete Post
+      <FontAwesomeIcon icon={faTrash} /> Delete Post
     </button>
   );
 };
 
 export default DeletePost;
- 

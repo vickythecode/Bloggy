@@ -113,7 +113,7 @@ header .nav-menu {
       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
   }
 
-  header .nav-menu.open {
+  header .nav-menu.open{
       display: flex;
   }
 }
@@ -192,9 +192,16 @@ header .nav-menu {
   }
 
   /* Form Styles */
+  .registerContainer{
+    min-height: 70vh;
+  }
+  .createNewPost{
+    min-height: 70vh;
+  }
   form.login,
   form.register {
       max-width: 400px;
+      max-height: 100vh;
       margin: 40px auto;
       background: #fff;
       padding: 20px;
@@ -262,7 +269,9 @@ header .nav-menu {
       margin-bottom: 20px;
       margin: 30px;
   }
-
+  div.post-page{
+    min-height: 100vh;
+  }
   div.post-page div.image img {
       object-fit: cover;
       object-position: center center;
@@ -347,105 +356,319 @@ header .nav-menu {
 
   /* Dark Theme Styles */
   body.dark-theme {
-      background-color: #2f3037;
-      color: #e0e0e0;
-  }
+    background-color: #2f3037;
+    color: #e0e0e0;
+}
 
-  body.dark-theme main {
-      background-color: #333;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
+body.dark-theme main {
+    background-color: #333;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 
-  body.dark-theme header a.logo {
-      color: #e0e0e0;
-  }
+body.dark-theme header a.logo {
+    color: #e0e0e0;
+}
 
-  body.dark-theme header nav a {
-      color: #bbbbbb;
-  }
+body.dark-theme header nav a {
+    color: #bbbbbb;
+}
 
-  body.dark-theme header nav a:hover {
-      background-color: #2a2a2a;
-      color: #80d8ff;
-  }
+body.dark-theme header nav a:hover {
+    background-color: #2a2a2a;
+    color: #80d8ff;
+}
 
-  body.dark-theme div.post {
-      background-color: #1c1c1c;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
+body.dark-theme div.post {
+    background-color: #1c1c1c;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 
-  body.dark-theme div.post div.texts h2 {
-      color: #dddddd;
-  }
+body.dark-theme div.post div.texts h2 {
+    color: #dddddd;
+}
 
-  body.dark-theme div.post div.texts a {
-      color: #cccccc;
-  }
+body.dark-theme div.post div.texts a {
+    color: #cccccc;
+}
 
-  body.dark-theme div.post p.info {
-      color: #999999;
-  }
+body.dark-theme div.post p.info {
+    color: #999999;
+}
 
-  body.dark-theme div.post p.info a.author {
-      color: #bbbbbb;
-  }
+body.dark-theme div.post p.info a.author {
+    color: #bbbbbb;
+}
 
-  body.dark-theme div.content p,
-  body.dark-theme div.content li {
-      color: #dddddd;
-  }
+body.dark-theme div.content p,
+body.dark-theme div.content li {
+    color: #e0e0e0; /* Ensured proper contrast */
+}
 
-  body.dark-theme form.login,
-  body.dark-theme form.register {
-      background-color: #1c1c1c;
-      box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
-  }
+body.dark-theme form.login,
+body.dark-theme form.register {
+    background-color: #1c1c1c;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
 
-  body.dark-theme input {
-      background-color: #2a2a2a;
-      border-color: #444444;  
-      color: #e0e0e0;
-  }
+body.dark-theme input {
+    background-color: #2a2a2a;
+    border-color: #444444;
+    color: #e0e0e0;
+}
 
-  body.dark-theme input:focus {
-      border-color: #80d8ff;
-      box-shadow: 0 0 8px rgba(128, 216, 255, 0.5);
-  }
+body.dark-theme input:focus {
+    border-color: #80d8ff;
+    box-shadow: 0 0 8px rgba(128, 216, 255, 0.5);
+}
 
-  body.dark-theme button {
-      background-color: #fff; /* Button background in dark theme set to white */
-      color: #333;
-  }
+body.dark-theme button,
+body.dark-theme .profile-button {
+    background-color: #fff; /* Button background in dark theme set to white */
+    color: #333;
+    border: 0;
+    padding: 15px; /* Same padding for consistency */
+    border-radius: 5px;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+    cursor: pointer;
+}
 
-  body.dark-theme button:hover {
-      background-color: #ddd;
-  }
+body.dark-theme button:hover,
+body.dark-theme .profile-button:hover {
+    background-color: #ddd;
+}
 
-  body.dark-theme div.post-page div.image {
-      border-color: #333333;
-  }
+body.dark-theme div.post-page div.image {
+    border-color: #333333;
+}
 
-  body.dark-theme div.post-page h1 {
-      color: #e0e0e0;
-  }
+body.dark-theme div.post-page h1 {
+    color: #e0e0e0;
+}
 
-  body.dark-theme div.post-page time {
-      color: #888888;
-  }
+body.dark-theme div.post-page time {
+    color: #888888;
+}
 
-  body.dark-theme div.post-page div.author {
-      color: #bbbbbb;
+body.dark-theme div.post-page div.author {
+    color: #bbbbbb;
+}
+
+body.dark-theme div.post-page a:hover {
+    color: #80d8ff;
+}
+
+body.dark-theme div.post-page a.edit-btn {
+    background-color: #333333;
+}
+
+body.dark-theme div.post-page a.edit-btn:hover {
+    background-color: #444444;
+}
+
+body.dark-theme .about-container {
+    background-color: #333;
+    color: #e0e0e0;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .about-container h1,
+body.dark-theme .about-container h2 {
+    color: #ffffff;
+}
+
+body.dark-theme .about-container p,
+body.dark-theme .about-container ul li {
+    color: #dddddd;
+}
+
+body.dark-theme .profile-dropdown {
+    background-color: #333;
+}
+
+body.dark-theme .dropdown-menu {
+    background-color: #444;
+    color: #e0e0e0;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme .dropdown-menu a {
+    color: #e0e0e0;
+}
+
+body.dark-theme .dropdown-menu a:hover {
+    background-color: #555;
+}
+  /* next */
+
+  .profile-dropdown {
+    position: relative;
+    display: inline-block;
   }
+  
+  .profile-button {
+    cursor: pointer;
+    background-color: #5a5a5a;
+    border: 0;
+    color: #fff;
+    border-radius: 5px;
+    padding: 1rem;
+    font-size: 1rem;
+    transition: background 0.3s ease, transform 0.3s ease;
+  }
+  
+  .dropdown-menu {
+    display: block;
+    position: absolute;
+    background-color: #fff;
+    border-radius: 1rem;
+    min-width: 10rem;
+    box-shadow: 0px 8px 16px rgba(0, 0, 0, 0.2);
+    padding: 1rem;
+    z-index: 1;
+  }
+  
+  .dropdown-menu p {
+    margin: 0;
+    padding: 5px 0;
+  }
+  
+  .dropdown-menu a {
+    display: block;
+    padding: 5px 0;
+    color: black;
+    text-decoration: none;
+  }
+  
+  .dropdown-menu a:hover {
+    background-color: #ddd;
+  }
+  
 
 
-  body.dark-theme div.post-page a:hover {
-      color: #80d8ff;
-  }
+  /* aboutPage  */
 
-  body.dark-theme div.post-page a.edit-btn {
-      background-color: #333333;
+  /* AboutPage.css */
+.about-container {
+    max-width: 100%;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 10px;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.2);
+    font-family: Arial, sans-serif;
   }
+  
+  .about-container h1 {
+    font-size: 2.5rem;
+    margin-bottom: 20px;
+    color: #333;
+    text-align: center;
+  }
+  
+  .about-container p {
+    font-size: 1.1rem;
+    line-height: 1.6;
+    color: #555;
+    margin-bottom: 20px;
+  }
+  
+  .about-container h2 {
+    margin-top: 20px;
+    color: #333;
+    font-size: 1.8rem;
+  }
+  
+  .about-container ul {
+    list-style-type: disc;
+    padding-left: 20px;
+    color: #555;
+  }
+  
+  .about-container ul li {
+    margin-bottom: 10px;
+    font-size: 1rem;
+  }
+  
+  @media (max-width: 768px) {
+    .about-container {
+      padding: 15px;
+    }
+  
+    .about-container h1 {
+      font-size: 2rem;
+    }
+  
+    .about-container h2 {
+      font-size: 1.5rem;
+    }
+  
+    .about-container p, .about-container ul li {
+      font-size: 0.95rem;
+    }
+  }
+  
 
-  body.dark-theme div.post-page a.edit-btn:hover {
-      background-color: #444444;
-  }
+  /* Footer Styles */
+.footer {
+    background-color: #333;
+    color: #fff;
+    text-align: center;
+    padding: 20px;
+    margin-top: auto;
+    width: 100%;
+    box-shadow: 0 -2px 10px rgba(0, 0, 0, 0.2);
+}
+
+.footer p {
+    margin: 0;
+    font-size: 1rem;
+    font-family: Arial, Helvetica, sans-serif;
+}
+
+.footer .social-icons {
+    margin-top: 10px;
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap; /* Ensures icons wrap on smaller screens */
+    gap: 10px;
+}
+
+.footer .social-icons a {
+    color: #fff;
+    margin: 0 10px;
+    text-decoration: none;
+    font-size: 1rem; /* Increased for better touch targets on mobile */
+    transition: color 0.3s ease;
+}
+
+.footer .social-icons a:hover {
+    color: #80d8ff;
+}
+
+/* Dark Theme */
+body.dark-theme .footer {
+    background-color: #fff;
+}
+
+body.dark-theme .footer .social-icons a {
+    color: #1c1c1c;
+}
+body.dark-theme .footer p {
+    color: #1c1c1c;
+}
+
+body.dark-theme .footer .social-icons a:hover {
+    color: #80d8ff;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .footer {
+        padding: 15px;
+        font-size: 0.8rem;
+    }
+
+    .footer .social-icons a {
+        margin: 0 5px;
+    }
+}

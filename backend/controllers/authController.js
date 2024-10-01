@@ -2,6 +2,7 @@ const bcrypt = require('bcryptjs');
 const jwt = require('jsonwebtoken');
 const User = require('../models/User');
 const dotenv = require('dotenv');
+const Post = require('../models/Post')
 
 dotenv.config({ path: '../.env' });
 
@@ -54,17 +55,31 @@ exports.login = async (req, res) => {
   }
 };
 
-exports.profile = (req, res) => {
+exports.profile = async (req, res) => {
   const { token } = req.cookies;
   if (!token) {
     return res.status(401).json('Token not provided');
   }
-  jwt.verify(token, process.env.SECRET, {}, (err, info) => {
+  jwt.verify(token, process.env.SECRET, {}, async(err, info) => {
     if (err) throw err;
-    res.json(info);
+    const blogPostsNum = await Post.countDocuments({ author: info.id });
+    res.json({ ...info, blogPostsNum });
   });
 };
 
 exports.logout = (req, res) => {
   res.cookie('token', '').json('ok');
 };
+
+exports.getUserBlogCount = async (req,res) => {
+  try {
+    const { userId } = req.params;
+
+    const blogCount = await Post.countDocuments({ author: userId });
+    
+    return res.json({ userId, blogCount });
+  } catch (error) {
+    console.error(error);
+    res.status(500).json('Internal server error');
+  }
+}
