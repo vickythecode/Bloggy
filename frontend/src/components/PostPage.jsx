@@ -1,36 +1,88 @@
-import {useContext, useEffect, useState} from "react";
-import {useParams} from "react-router-dom";
-import {formatISO9075} from "date-fns";
-import {UserContext} from "../context/UserContext";
-import {Link,Navigate} from 'react-router-dom';
+import { useContext, useEffect, useState } from "react";
+import { useParams, Link, Navigate ,useNavigate} from "react-router-dom";
+import { formatISO9075 } from "date-fns";
+import { UserContext } from "../context/UserContext";
 import DeletePost from "./DeletePost";
 
 export default function PostPage() {
-  const [postInfo,setPostInfo] = useState(null);
-  const {userInfo} = useContext(UserContext);
-  const {id} = useParams();
+  const [postInfo, setPostInfo] = useState(null);
+  const [likes, setLikes] = useState([]);
+  const [comments, setComments] = useState([]);
+  const { userInfo } = useContext(UserContext);
+  const { id } = useParams();
+  const navigate = useNavigate(); 
 
   useEffect(() => {
+    // Fetch the post details
     fetch(`http://localhost:4000/post/${id}`)
-      .then(response => {
-        response.json().then(postInfo => {
-          setPostInfo(postInfo);
-        });
+      .then(response => response.json())
+      .then(postInfo => {
+        setPostInfo(postInfo);
+        setLikes(postInfo.likes);
+        setComments(postInfo.comments);
       });
   }, [id]);
-
-  if (!postInfo) return '';
-
 
   const handleDeleteSuccess = () => {
     <Navigate to={'/'} /> // Redirect to the homepage after successful deletion
   };
+
+  const handleLike = async () => {
+    if (!userInfo.id) { // Check if the user is not logged in
+      navigate('/login'); // Redirect to login page
+      return;
+    }
+
+    const response = await fetch(`http://localhost:4000/post/${id}/like`, {
+      method: 'POST',
+      credentials: 'include',
+    });
+    const updatedPost = await response.json();
+    setLikes(updatedPost.likes);
+  };
+
+  const handleCommentSubmit = async (event) => {
+    event.preventDefault();
+
+    if (!userInfo.id) { // Check if the user is not logged in
+      navigate('/login'); // Redirect to login page
+      return;
+    }
+
+    const commentText = event.target.comment.value;
+
+    const response = await fetch(`http://localhost:4000/post/${id}/comments`, {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      credentials: 'include',
+      body: JSON.stringify({ text: commentText }),
+    });
+
+    const updatedPost = await response.json();
+    setComments(updatedPost.comments);
+    event.target.reset(); // Clear the input
+  };
+
+  const handleCommentDelete = async (commentId) => {
+    const response = await fetch(`http://localhost:4000/post/${id}/comments/${commentId}`, {
+      method: 'DELETE',
+      credentials: 'include',
+    });
+
+    if (response.ok) {
+      // Filter out the deleted comment from the comments state
+      setComments(prevComments => prevComments.filter(comment => comment._id !== commentId));
+    }
+  };
+
+  if (!postInfo) return '';
 
   return (
     <div className="post-page">
       <h1>{postInfo.title}</h1>
       <time>{formatISO9075(new Date(postInfo.createdAt))}</time>
       <div className="author">by @{postInfo.author.username}</div>
+
       {userInfo.id === postInfo.author._id && (
         <div className="edit-row">
           <Link className="edit-btn" to={`/edit/${postInfo._id}`}>
@@ -39,15 +91,46 @@ export default function PostPage() {
             </svg>
             Edit this post
           </Link>
-
-
         </div>
       )}
+
       <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt=""/>
+        <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
       </div>
-      <div className="content" dangerouslySetInnerHTML={{__html:postInfo.content}} />
-      {userInfo.id === postInfo.author._id &&(<DeletePost postId={postInfo._id} onDeleteSuccess={handleDeleteSuccess} />)}
+      <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
+      
+      {/* Likes Section */}
+      <div className="likes-section">
+        <button onClick={handleLike}>
+          {likes.includes(userInfo.id) ? "Unlike" : "Like"}
+        </button>
+        <p>{likes.length} likes</p>
+      </div>
+
+      {/* Comments Section */}
+      <div className="comments-section">
+        <h2>Comments ({comments.length})</h2>
+        <form onSubmit={handleCommentSubmit}>
+          <textarea name="comment" placeholder="Add a comment..." required></textarea>
+          <button type="submit">Submit</button>
+        </form>
+        <div className="comments">
+          {comments.map(comment => (
+            <div key={comment._id} className="comment">
+              <strong>{comment.user.username}</strong>: <p className="cmtTxt">{comment.text}</p>
+              {comment.user === userInfo.id && (
+                <button onClick={() => handleCommentDelete(comment._id)}>
+                  Delete
+                </button>
+              )}
+            </div>
+          ))}
+        </div>
+      </div>
+
+      {userInfo.id === postInfo.author._id && (
+        <DeletePost postId={postInfo._id} onDeleteSuccess={handleDeleteSuccess} />
+      )}
     </div>
   );
-} 
+}

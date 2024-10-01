@@ -672,3 +672,238 @@ body.dark-theme .footer .social-icons a:hover {
         margin: 0 5px;
     }
 }
+
+
+
+/* Post Page Styles */
+.post-page {
+    margin: 20px auto;
+    padding: 20px;
+    background-color: #f9f9f9;
+    border-radius: 8px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+    color: #333;
+  }
+  
+  .post-page h1 {
+    font-size: 2.5em;
+    margin-bottom: 10px;
+  }
+  
+  .post-page time {
+    display: block;
+    font-size: 0.9em;
+    color: #888;
+    margin-bottom: 5px;
+  }
+  
+  .author {
+    font-weight: bold;
+    margin-bottom: 20px;
+  }
+  
+  .edit-row {
+    margin-bottom: 20px;
+  }
+  
+  .edit-btn {
+    display: inline-flex;
+    align-items: center;
+    padding: 10px 15px;
+    border: none;
+    background-color: #444;
+    color: white;
+    text-decoration: none;
+    border-radius: 5px;
+    transition: background-color 0.3s;
+  }
+  
+  .edit-btn:hover {
+    background-color: #666;
+  }
+  
+  .image {
+    margin: 20px 0;
+    text-align: center;
+  }
+  
+  .image img {
+    max-width: 100%;
+    height: auto;
+    border-radius: 5px;
+  }
+  
+  .content {
+    margin: 20px 0;
+    line-height: 1.6;
+  }
+  
+  .likes-section{
+    display: flex;
+    gap: 1rem;
+  }
+  .likes-section p{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+  }
+
+  .likes-section,
+  .comments-section {
+    margin: 20px 0;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+  }
+  
+  .likes-section button,
+  .comments-section button {
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    background-color: #444;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .likes-section button:hover,
+  .comments-section button:hover {
+    background-color: #666;
+  }
+  
+  .comments-section h2 {
+    margin-bottom: 10px;
+  }
+  
+  .comments-section form {
+    margin-bottom: 20px;
+  }
+  
+  .comments-section textarea {
+    width: 100%;
+    height: 80px;
+    padding: 10px;
+    border: 1px solid #ddd;
+    border-radius: 5px;
+    resize: none;
+    margin-bottom: 10px;
+  }
+  
+  .comments {
+    margin-top: 20px;
+  }
+  
+  .comment {
+    margin-bottom: 10px;
+    border-bottom: 1px solid #eee;
+    padding-bottom: 5px;
+    display: flex;
+    gap: 1rem;
+  }
+  
+  .comment strong {
+    color: #333;
+  }
+  
+  .comment button {
+    margin-left: 10px;
+    padding: 5px 10px;
+    border: none;
+    border-radius: 5px;
+    background-color: #d9534f;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .comment button:hover {
+    background-color: #c9302c;
+  }
+  
+  /* Delete Post Button */
+  .delete-post-btn {
+    margin-top: 20px;
+    padding: 10px 15px;
+    border: none;
+    background-color: #d9534f;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+  }
+  
+  .delete-post-btn:hover {
+    background-color: #c9302c;
+  }
+  
+  .cmtTxt{
+    text-wrap: nowrap;
+  }
+
+
+  /* Dark Theme Styles */
+body.dark-theme {
+  background-color: #2f3037;
+  color: #e0e0e0;
+}
+
+body.dark-theme main {
+  background-color: #333;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.5);
+}
+
+body.dark-theme div.post-page {
+  background-color: #333; /* Background color for post page */
+  color: #e0e0e0; /* General text color */
+}
+
+body.dark-theme div.post-page h1 {
+  color: #e0e0e0;
+}
+
+body.dark-theme div.post-page time {
+  color: #888888;
+}
+
+body.dark-theme div.post-page div.author {
+  color: #bbbbbb;
+}
+
+body.dark-theme div.post-page p,
+body.dark-theme div.post-page li {
+  color: #e0e0e0; /* Ensure proper contrast */
+}
+
+body.dark-theme div.post-page div.image {
+  border-color: #444;
+  background-color: #444; /* If images have backgrounds, ensure it's dark */
+}
+
+body.dark-theme div.post-page a {
+  color: #80d8ff; /* Link color */
+}
+
+body.dark-theme div.post-page a:hover {
+  color: #4fc3f7; /* Lighter hover color */
+}
+
+body.dark-theme div.post-page a.edit-btn {
+  background-color: #444444;
+  color: #fff;
+}
+
+body.dark-theme div.post-page a.edit-btn:hover {
+  background-color: #555555;
+}
+
+/* Ensure the text for any buttons or other elements is visible */
+body.dark-theme button,
+body.dark-theme .profile-button {
+  background-color: #fff; 
+  color: #333;
+}
+
+body.dark-theme strong{
+  color: #fff;
+}

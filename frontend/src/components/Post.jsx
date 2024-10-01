@@ -6,9 +6,16 @@ import LoadingBar from "react-top-loading-bar";
 export default function Post({ _id, title, summary, cover, content, createdAt, author }) {
   const loadingBar = useRef(null);
   const [isLoading, setIsLoading] = useState(true);
+  const [postDetails, setPostDetails] = useState({ likes: [], comments: [] });
 
   useEffect(() => {
-    // Simulate loading
+    // Fetch post details to get the total likes and comments
+    fetch(`http://localhost:4000/post/${_id}`)
+      .then(response => response.json())
+      .then(data => setPostDetails({ likes: data.likes, comments: data.comments }))
+      .catch(error => console.error("Error fetching post details:", error));
+
+    // Simulate loading bar
     if (isLoading) {
       loadingBar.current.continuousStart();
     }
@@ -18,7 +25,7 @@ export default function Post({ _id, title, summary, cover, content, createdAt, a
     }, 1000); // Adjust the time as needed
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [_id, isLoading]);
 
   return (
     <>
@@ -41,6 +48,10 @@ export default function Post({ _id, title, summary, cover, content, createdAt, a
               </p>
               <p className="summary">{summary}</p>
             </Link>
+            {/* Display the total likes and comments */}
+            <div className="post-meta">
+              <span>{postDetails.likes.length} Likes</span> | <span>{postDetails.comments.length} Comments</span>
+            </div>
           </div>
         </div>
       )}

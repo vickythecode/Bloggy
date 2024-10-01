@@ -9,4 +9,8 @@ router.get('/post', postController.getPosts);
 router.get('/post/:id', postController.getPostById);
 router.delete('/post/:id', postController.deletePost);
 
+router.post('/post/:id/like', postController.likePost);
+router.post('/post/:id/comments', postController.addComment);
+router.delete('/post/:id/comments/:commentId', postController.deleteComment);
+
 module.exports = router;
