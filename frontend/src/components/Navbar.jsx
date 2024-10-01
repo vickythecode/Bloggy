@@ -34,7 +34,7 @@ const Navbar = () => {
   }
 
   useEffect(() => {
-    fetch("http://localhost:4000/profile", {
+    fetch("https://bloggy-97fr.onrender.com/profile", {
       credentials: "include",
     }).then((response) => {
       response.json().then((userInfo) => {
@@ -44,7 +44,7 @@ const Navbar = () => {
   }, []);
 
   function logout() {
-    fetch("http://localhost:4000/logout", {
+    fetch("https://bloggy-97fr.onrender.com/logout", {
       credentials: "include",
       method: "POST",
     });

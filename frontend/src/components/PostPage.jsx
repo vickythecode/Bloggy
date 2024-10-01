@@ -14,7 +14,7 @@ export default function PostPage() {
 
   useEffect(() => {
     // Fetch the post details
-    fetch(`http://localhost:4000/post/${id}`)
+    fetch(`https://bloggy-97fr.onrender.com/post/${id}`)
       .then(response => response.json())
       .then(postInfo => {
         setPostInfo(postInfo);
@@ -33,7 +33,7 @@ export default function PostPage() {
       return;
     }
 
-    const response = await fetch(`http://localhost:4000/post/${id}/like`, {
+    const response = await fetch(`https://bloggy-97fr.onrender.com/post/${id}/like`, {
       method: 'POST',
       credentials: 'include',
     });
@@ -51,7 +51,7 @@ export default function PostPage() {
 
     const commentText = event.target.comment.value;
 
-    const response = await fetch(`http://localhost:4000/post/${id}/comments`, {
+    const response = await fetch(`https://bloggy-97fr.onrender.com/post/${id}/comments`, {
       method: 'POST',
       headers: { 'Content-Type': 'application/json' },
       credentials: 'include',
@@ -64,7 +64,7 @@ export default function PostPage() {
   };
 
   const handleCommentDelete = async (commentId) => {
-    const response = await fetch(`http://localhost:4000/post/${id}/comments/${commentId}`, {
+    const response = await fetch(`https://bloggy-97fr.onrender.com/post/${id}/comments/${commentId}`, {
       method: 'DELETE',
       credentials: 'include',
     });
@@ -95,7 +95,7 @@ export default function PostPage() {
       )}
 
       <div className="image">
-        <img src={`http://localhost:4000/${postInfo.cover}`} alt="" />
+        <img src={`https://bloggy-97fr.onrender.com/${postInfo.cover}`} alt="" />
       </div>
       <div className="content" dangerouslySetInnerHTML={{ __html: postInfo.content }} />
       

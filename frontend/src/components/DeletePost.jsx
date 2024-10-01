@@ -8,7 +8,7 @@ const DeletePost = ({ postId, onDeleteSuccess }) => {
 
   const deletePost = async () => {
     try {
-      const response = await fetch(`http://localhost:4000/post/${postId}`, {
+      const response = await fetch(`https://bloggy-97fr.onrender.com/post/${postId}`, {
         method: 'DELETE',
         credentials: 'include', // To send cookies with the request
       });

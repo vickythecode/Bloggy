@@ -10,7 +10,7 @@ export default function Post({ _id, title, summary, cover, content, createdAt, a
 
   useEffect(() => {
     // Fetch post details to get the total likes and comments
-    fetch(`http://localhost:4000/post/${_id}`)
+    fetch(`https://bloggy-97fr.onrender.com/post/${_id}`)
       .then(response => response.json())
       .then(data => setPostDetails({ likes: data.likes, comments: data.comments }))
       .catch(error => console.error("Error fetching post details:", error));
@@ -34,7 +34,7 @@ export default function Post({ _id, title, summary, cover, content, createdAt, a
         <div className="post">
           <div className="image">
             <Link to={`/post/${_id}`}>
-              <img src={'http://localhost:4000/' + cover} alt="" />
+              <img src={'https://bloggy-97fr.onrender.com/' + cover} alt="" />
             </Link>
           </div>
           <div className="texts">

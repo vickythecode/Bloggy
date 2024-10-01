@@ -9,7 +9,7 @@ export default function CommentSection({ postId }) {
   useEffect(() => {
     const fetchComments = async () => {
       try {
-        const response = await fetch(`http://localhost:4000/post/${postId}/comments`);
+        const response = await fetch(`https://bloggy-97fr.onrender.com/post/${postId}/comments`);
 
         if (response.ok) {
           const data = await response.json();
@@ -28,7 +28,7 @@ export default function CommentSection({ postId }) {
     if (!newComment.trim()) return;
 
     try {
-      const response = await fetch(`http://localhost:4000/post/${postId}/comments`, {
+      const response = await fetch(`https://bloggy-97fr.onrender.com/post/${postId}/comments`, {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
@@ -52,7 +52,7 @@ export default function CommentSection({ postId }) {
 
   const handleDeleteComment = async (commentId) => {
     try {
-      const response = await fetch(`http://localhost:4000/post/${postId}/comments/${commentId}`, {
+      const response = await fetch(`https://bloggy-97fr.onrender.com/post/${postId}/comments/${commentId}`, {
         method: "DELETE",
         credentials: "include",
       });

@@ -26,7 +26,7 @@ export default function RegisterPage() {
 
     // Send data to the server if validation passes
     try {
-      const response = await fetch('http://localhost:4000/register', {
+      const response = await fetch('https://bloggy-97fr.onrender.com/register', {
         method: 'POST',
         body: JSON.stringify({ username, password }),
         headers: { 'Content-Type': 'application/json' },
