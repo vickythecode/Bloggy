@@ -10,26 +10,7 @@ dotenv.config({ path: './.env' });
 
 const app = express();
 
-// app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
-
-const allowedOrigins = [
-  'https://bloggy-1-frontend.onrender.com',
-  'https://bloggy-1-frontend.onrender.com/post',
-  'https://bloggy-1-frontend.onrender.com/create'
-];
-
-app.use(cors({
-  credentials: true,
-  origin: function (origin, callback) {
-    if (!origin || allowedOrigins.includes(origin)) {
-      callback(null, true);
-    } else {
-      callback(new Error('Not allowed by CORS'));
-    }
-  }
-}));
-
-
+app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
 
 app.use(express.json());
 app.use(cookieParser());
