@@ -13,10 +13,11 @@ const app = express();
 // app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
 
 const corsOptions = {
-  origin: 'https://bloggy-1-frontend.onrender.com',
+  origin: 'https://bloggy-1-frontend.onrender.com', // Your frontend's origin
   methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
-  allowedHeaders: 'Content-Type,Authorization',
+  allowedHeaders: '*',  // Allow all headers for now (you can fine-tune later)
   credentials: true,
+  optionsSuccessStatus: 200,  // To handle legacy browsers
 };
 
 app.use(cors(corsOptions));
