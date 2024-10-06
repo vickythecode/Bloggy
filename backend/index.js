@@ -10,7 +10,10 @@ dotenv.config({ path: './.env' });
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
+app.use(cors({
+  origin: 'https://bloggy-1-frontend.onrender.com',
+  credentials: true // Allow credentials (cookies, tokens)
+}));
 
 app.use(express.json());
 app.use(cookieParser());
