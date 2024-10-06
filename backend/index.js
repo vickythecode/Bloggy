@@ -13,7 +13,7 @@ const app = express();
 // app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
 
 app.use(cors({
-    origin:*,
+    origin:'*',
     credentials:true
 }))
 
