@@ -18,7 +18,7 @@ export default function CreatePost() {
     ev.preventDefault();
    const response = await fetch('https://bloggy-97fr.onrender.com/post', {
     method: 'POST',
-    body: data,
+    body: JSON.stringify(data),
     credentials: 'include',
     headers: {
       'Access-Control-Allow-Origin': 'https://bloggy-1-frontend.onrender.com', // Explicitly allow your frontend
