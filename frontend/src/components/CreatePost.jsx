@@ -17,14 +17,11 @@ export default function CreatePost() {
     data.set('file', files[0]);
     ev.preventDefault();
    const response = await fetch('https://bloggy-97fr.onrender.com/post', {
-    method: 'POST',
-    body: JSON.stringify(data),
-    credentials: 'include',
-    headers: {
-      'Access-Control-Allow-Origin': 'https://bloggy-1-frontend.onrender.com', // Explicitly allow your frontend
-      'Access-Control-Allow-Credentials': 'true', // Allow credentials if necessary
-      },
+        method: 'POST',
+        body: data,  // Use FormData directly instead of JSON.stringify
+        credentials: 'include', // Still include credentials if necessary
     });
+
 
     if (response.ok) {
       setRedirect(true);
