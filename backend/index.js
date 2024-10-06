@@ -14,11 +14,13 @@ const app = express();
 
 const corsOptions = {
   origin: 'https://bloggy-1-frontend.onrender.com',
-  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE',
-  credentials: true,  // Allow credentials (cookies, auth headers, etc.)
+  methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
+  allowedHeaders: 'Content-Type,Authorization',
+  credentials: true,
 };
 
 app.use(cors(corsOptions));
+
 
 
 app.use(express.json());
