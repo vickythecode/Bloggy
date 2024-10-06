@@ -10,7 +10,7 @@ dotenv.config({ path: './.env' });
 
 const app = express();
 
-app.use(cors({ credentials: true, origin: 'https://bloggy-1-frontend.onrender.com' }));
+app.use(cors());
 app.use(express.json());
 app.use(cookieParser());
 app.use('/uploads', express.static(__dirname + '/uploads'));
